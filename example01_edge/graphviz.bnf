@@ -1,0 +1,7 @@
+_letter : 'a' - 'z' | 'A' - 'Z';
+id : _letter { _letter };
+
+!whitespace : ' ' | '\t' | '\r' | '\n' ;
+
+Grammar :
+  id "->" id;
