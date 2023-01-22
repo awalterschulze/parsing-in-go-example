@@ -5,7 +5,7 @@ package lexer
 import (
 	"fmt"
 
-	"github.com/awalterschulze/parsing-in-go-example/example04_attrs/gen_parser/token"
+	"github.com/awalterschulze/parsing-in-go-example/example05_finish/gen_parser/token"
 )
 
 type ActionTable [NumStates]ActionRow

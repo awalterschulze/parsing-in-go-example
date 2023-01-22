@@ -30,13 +30,13 @@ var productionsTable = ProdTab{
 		},
 	},
 	ProdTabEntry{
-		String:     `Grammar : "digraph" "{" Statements "}"	<< X[2], nil >>`,
+		String:     `Grammar : "digraph" id "{" Statements "}"	<< SetGraphName(X[3], X[1]) >>`,
 		Id:         "Grammar",
 		NTType:     1,
 		Index:      1,
-		NumSymbols: 4,
+		NumSymbols: 5,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return X[2], nil
+			return SetGraphName(X[3], X[1])
 		},
 	},
 	ProdTabEntry{

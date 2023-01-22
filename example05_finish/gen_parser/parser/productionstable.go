@@ -2,7 +2,7 @@
 
 package parser
 
-import . "github.com/awalterschulze/parsing-in-go-example/example04_attrs/ast"
+import . "github.com/awalterschulze/parsing-in-go-example/example05_finish/ast"
 
 type (
 	ProdTab      [numProductions]ProdTabEntry
@@ -70,20 +70,60 @@ var productionsTable = ProdTab{
 		},
 	},
 	ProdTabEntry{
+		String:     `Statement : NodeStmt	<<  >>`,
+		Id:         "Statement",
+		NTType:     3,
+		Index:      5,
+		NumSymbols: 1,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return X[0], nil
+		},
+	},
+	ProdTabEntry{
+		String:     `Statement : AttrStmt	<<  >>`,
+		Id:         "Statement",
+		NTType:     3,
+		Index:      6,
+		NumSymbols: 1,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return X[0], nil
+		},
+	},
+	ProdTabEntry{
 		String:     `EdgeStmt : id "->" id OptionalAttributes	<< &Edge{Src: ID(X[0]), Dst: ID(X[2]), Attrs: X[3].(Attrs)}, nil >>`,
 		Id:         "EdgeStmt",
 		NTType:     4,
-		Index:      5,
+		Index:      7,
 		NumSymbols: 4,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return &Edge{Src: ID(X[0]), Dst: ID(X[2]), Attrs: X[3].(Attrs)}, nil
 		},
 	},
 	ProdTabEntry{
+		String:     `NodeStmt : id OptionalAttributes	<< &Node{Name: ID(X[0]), Attrs: X[1].(Attrs)}, nil >>`,
+		Id:         "NodeStmt",
+		NTType:     5,
+		Index:      8,
+		NumSymbols: 2,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return &Node{Name: ID(X[0]), Attrs: X[1].(Attrs)}, nil
+		},
+	},
+	ProdTabEntry{
+		String:     `AttrStmt : Attribute	<< X[0], nil >>`,
+		Id:         "AttrStmt",
+		NTType:     6,
+		Index:      9,
+		NumSymbols: 1,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return X[0], nil
+		},
+	},
+	ProdTabEntry{
 		String:     `OptionalAttributes : "[" Attributes "]"	<< X[1], nil >>`,
 		Id:         "OptionalAttributes",
-		NTType:     5,
-		Index:      6,
+		NTType:     7,
+		Index:      10,
 		NumSymbols: 3,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return X[1], nil
@@ -92,8 +132,8 @@ var productionsTable = ProdTab{
 	ProdTabEntry{
 		String:     `OptionalAttributes : empty	<< Attrs{}, nil >>`,
 		Id:         "OptionalAttributes",
-		NTType:     5,
-		Index:      7,
+		NTType:     7,
+		Index:      11,
 		NumSymbols: 0,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return Attrs{}, nil
@@ -102,8 +142,8 @@ var productionsTable = ProdTab{
 	ProdTabEntry{
 		String:     `Attributes : Attribute	<< X[0], nil >>`,
 		Id:         "Attributes",
-		NTType:     6,
-		Index:      8,
+		NTType:     8,
+		Index:      12,
 		NumSymbols: 1,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return X[0], nil
@@ -112,8 +152,8 @@ var productionsTable = ProdTab{
 	ProdTabEntry{
 		String:     `Attributes : Attributes "," Attribute	<< UnionMaps(X[0].(Attrs), X[2].(Attrs)), nil >>`,
 		Id:         "Attributes",
-		NTType:     6,
-		Index:      9,
+		NTType:     8,
+		Index:      13,
 		NumSymbols: 3,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return UnionMaps(X[0].(Attrs), X[2].(Attrs)), nil
@@ -122,8 +162,8 @@ var productionsTable = ProdTab{
 	ProdTabEntry{
 		String:     `Attribute : id "=" id	<< Attrs{ID(X[0]): ID(X[2])}, nil >>`,
 		Id:         "Attribute",
-		NTType:     7,
-		Index:      10,
+		NTType:     9,
+		Index:      14,
 		NumSymbols: 3,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return Attrs{ID(X[0]): ID(X[2])}, nil

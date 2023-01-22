@@ -10,7 +10,7 @@ id : _letter { _letter };
 << import . "github.com/awalterschulze/parsing-in-go-example/example03_edges/ast" >>
 
 Grammar
-  : "digraph" "{" Statements "}" << $2, nil >>
+  : "digraph" id "{" Statements "}" << SetGraphName($3, $1) >>
   ;
 
 Statements

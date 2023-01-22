@@ -1,12 +1,16 @@
 package ast
 
 import (
-	"github.com/awalterschulze/parsing-in-go-example/example04_attrs/gen_parser/token"
+	"fmt"
+
+	"github.com/awalterschulze/parsing-in-go-example/example05_finish/gen_parser/token"
 )
 
 type Graph struct {
 	Name  string
 	Edges []*Edge
+	Nodes []*Node
+	Attrs Attrs
 }
 
 func NewGraph(s interface{}) (*Graph, error) {
@@ -19,12 +23,25 @@ func SetGraphName(g interface{}, name interface{}) (*Graph, error) {
 }
 
 func AppendStmt(g *Graph, s interface{}) (*Graph, error) {
-	return &Graph{Edges: append(g.Edges, s.(*Edge))}, nil
+	switch s.(type) {
+	case *Edge:
+		return &Graph{Edges: append(g.Edges, s.(*Edge))}, nil
+	case *Node:
+		return &Graph{Nodes: append(g.Nodes, s.(*Node))}, nil
+	case Attrs:
+		return &Graph{Attrs: UnionMaps(g.Attrs, s.(Attrs))}, nil
+	}
+	return nil, fmt.Errorf("unknown type %T", s)
 }
 
 type Edge struct {
 	Src   string
 	Dst   string
+	Attrs Attrs
+}
+
+type Node struct {
+	Name  string
 	Attrs Attrs
 }
 

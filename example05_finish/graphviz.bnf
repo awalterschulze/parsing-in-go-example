@@ -7,7 +7,7 @@ id : _letter { _letter };
 
 // Grammar
 
-<< import . "github.com/awalterschulze/parsing-in-go-example/example04_attrs/ast" >>
+<< import . "github.com/awalterschulze/parsing-in-go-example/example05_finish/ast" >>
 
 Grammar
   : "digraph" id "{" Statements "}" << SetGraphName($3, $1) >>
@@ -20,10 +20,21 @@ Statements
 
 Statement
   : EdgeStmt
+  | NodeStmt
+  | AttrStmt
   ;
 
 EdgeStmt
-  : id "->" id OptionalAttributes << &Edge{Src: ID($0), Dst: ID($2), Attrs: $3.(Attrs)}, nil >> ;
+  : id "->" id OptionalAttributes << &Edge{Src: ID($0), Dst: ID($2), Attrs: $3.(Attrs)}, nil >>
+  ;
+
+NodeStmt
+  : id OptionalAttributes         << &Node{Name: ID($0), Attrs: $1.(Attrs)}, nil >>
+  ;
+
+AttrStmt
+  : Attribute                     << $0, nil >>
+  ;
 
 OptionalAttributes
   : "[" Attributes "]"            << $1, nil >>
@@ -36,4 +47,5 @@ Attributes
   ;
 
 Attribute
-  : id "=" id                     << Attrs{ID($0): ID($2)}, nil >> ;
+  : id "=" id                     << Attrs{ID($0): ID($2)}, nil >>
+  ;

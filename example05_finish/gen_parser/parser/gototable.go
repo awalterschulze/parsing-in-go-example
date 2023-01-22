@@ -2,7 +2,7 @@
 
 package parser
 
-const numNTSymbols = 8
+const numNTSymbols = 10
 
 type (
 	gotoTable [numStates]gotoRow
@@ -16,6 +16,8 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
@@ -26,6 +28,8 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
@@ -36,6 +40,8 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
@@ -46,6 +52,8 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
@@ -56,9 +64,11 @@ var gotoTab = gotoTable{
 		6,  // Statements
 		7,  // Statement
 		8,  // EdgeStmt
+		9,  // NodeStmt
+		10, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
-		-1, // Attribute
+		11, // Attribute
 	},
 	gotoRow{ // S5
 		-1, // S'
@@ -66,7 +76,9 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
-		-1, // OptionalAttributes
+		-1, // NodeStmt
+		-1, // AttrStmt
+		13, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
 	},
@@ -74,11 +86,13 @@ var gotoTab = gotoTable{
 		-1, // S'
 		-1, // Grammar
 		-1, // Statements
-		11, // Statement
+		17, // Statement
 		8,  // EdgeStmt
+		9,  // NodeStmt
+		10, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
-		-1, // Attribute
+		11, // Attribute
 	},
 	gotoRow{ // S7
 		-1, // S'
@@ -86,6 +100,8 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
@@ -96,6 +112,8 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
@@ -106,6 +124,8 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
@@ -116,6 +136,8 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
@@ -126,6 +148,8 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
@@ -136,7 +160,9 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
-		13, // OptionalAttributes
+		-1, // NodeStmt
+		-1, // AttrStmt
+		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
 	},
@@ -146,6 +172,8 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
@@ -156,9 +184,11 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
-		16, // Attributes
-		17, // Attribute
+		21, // Attributes
+		20, // Attribute
 	},
 	gotoRow{ // S15
 		-1, // S'
@@ -166,6 +196,8 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
@@ -176,6 +208,8 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
@@ -186,6 +220,8 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
@@ -196,7 +232,9 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
-		-1, // OptionalAttributes
+		-1, // NodeStmt
+		-1, // AttrStmt
+		23, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
 	},
@@ -206,6 +244,8 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
@@ -216,9 +256,11 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
-		22, // Attribute
+		-1, // Attribute
 	},
 	gotoRow{ // S21
 		-1, // S'
@@ -226,6 +268,8 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute
@@ -236,6 +280,80 @@ var gotoTab = gotoTable{
 		-1, // Statements
 		-1, // Statement
 		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
+		-1, // OptionalAttributes
+		-1, // Attributes
+		-1, // Attribute
+	},
+	gotoRow{ // S23
+		-1, // S'
+		-1, // Grammar
+		-1, // Statements
+		-1, // Statement
+		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
+		-1, // OptionalAttributes
+		-1, // Attributes
+		-1, // Attribute
+	},
+	gotoRow{ // S24
+		-1, // S'
+		-1, // Grammar
+		-1, // Statements
+		-1, // Statement
+		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
+		-1, // OptionalAttributes
+		-1, // Attributes
+		-1, // Attribute
+	},
+	gotoRow{ // S25
+		-1, // S'
+		-1, // Grammar
+		-1, // Statements
+		-1, // Statement
+		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
+		-1, // OptionalAttributes
+		-1, // Attributes
+		-1, // Attribute
+	},
+	gotoRow{ // S26
+		-1, // S'
+		-1, // Grammar
+		-1, // Statements
+		-1, // Statement
+		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
+		-1, // OptionalAttributes
+		-1, // Attributes
+		28, // Attribute
+	},
+	gotoRow{ // S27
+		-1, // S'
+		-1, // Grammar
+		-1, // Statements
+		-1, // Statement
+		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
+		-1, // OptionalAttributes
+		-1, // Attributes
+		-1, // Attribute
+	},
+	gotoRow{ // S28
+		-1, // S'
+		-1, // Grammar
+		-1, // Statements
+		-1, // Statement
+		-1, // EdgeStmt
+		-1, // NodeStmt
+		-1, // AttrStmt
 		-1, // OptionalAttributes
 		-1, // Attributes
 		-1, // Attribute

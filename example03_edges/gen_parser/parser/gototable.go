@@ -34,16 +34,16 @@ var gotoTab = gotoTable{
 	gotoRow{ // S3
 		-1, // S'
 		-1, // Grammar
-		4,  // Statements
-		5,  // Statement
-		6,  // EdgeStmt
+		-1, // Statements
+		-1, // Statement
+		-1, // EdgeStmt
 	},
 	gotoRow{ // S4
 		-1, // S'
 		-1, // Grammar
-		-1, // Statements
-		9,  // Statement
-		6,  // EdgeStmt
+		6,  // Statements
+		7,  // Statement
+		8,  // EdgeStmt
 	},
 	gotoRow{ // S5
 		-1, // S'
@@ -56,8 +56,8 @@ var gotoTab = gotoTable{
 		-1, // S'
 		-1, // Grammar
 		-1, // Statements
-		-1, // Statement
-		-1, // EdgeStmt
+		11, // Statement
+		8,  // EdgeStmt
 	},
 	gotoRow{ // S7
 		-1, // S'
@@ -88,6 +88,13 @@ var gotoTab = gotoTable{
 		-1, // EdgeStmt
 	},
 	gotoRow{ // S11
+		-1, // S'
+		-1, // Grammar
+		-1, // Statements
+		-1, // Statement
+		-1, // EdgeStmt
+	},
+	gotoRow{ // S12
 		-1, // S'
 		-1, // Grammar
 		-1, // Statements

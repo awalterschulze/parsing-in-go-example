@@ -10,14 +10,14 @@ import (
 )
 
 func TestPass(t *testing.T) {
-	input := []byte("digraph { File -> Scanner [label = Tokens]	}")
+	input := []byte("digraph Parsing { File -> Scanner [label = Tokens]	}")
 	lex := lexer.NewLexer(input)
 	p := parser.NewParser()
 	got, err := p.Parse(lex)
 	if err != nil {
 		t.Fatal(err)
 	}
-	want := &Graph{Edges: []*Edge{{Src: "File", Dst: "Scanner", Attrs: Attrs{"label": "Tokens"}}}}
+	want := &Graph{Name: "Parsing", Edges: []*Edge{{Src: "File", Dst: "Scanner", Attrs: Attrs{"label": "Tokens"}}}}
 	if !reflect.DeepEqual(got, want) {
 		t.Fatalf("expected ast to be %#v, but got %#v", want, got)
 	}

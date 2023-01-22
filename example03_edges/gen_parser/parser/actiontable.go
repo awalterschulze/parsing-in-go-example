@@ -17,9 +17,9 @@ var actionTab = actionTable{
 			nil,      // INVALID
 			nil,      // $
 			shift(2), // digraph
+			nil,      // id
 			nil,      // {
 			nil,      // }
-			nil,      // id
 			nil,      // ->
 		},
 	},
@@ -29,9 +29,9 @@ var actionTab = actionTable{
 			nil,          // INVALID
 			accept(true), // $
 			nil,          // digraph
+			nil,          // id
 			nil,          // {
 			nil,          // }
-			nil,          // id
 			nil,          // ->
 		},
 	},
@@ -41,9 +41,9 @@ var actionTab = actionTable{
 			nil,      // INVALID
 			nil,      // $
 			nil,      // digraph
-			shift(3), // {
+			shift(3), // id
+			nil,      // {
 			nil,      // }
-			nil,      // id
 			nil,      // ->
 		},
 	},
@@ -53,9 +53,9 @@ var actionTab = actionTable{
 			nil,      // INVALID
 			nil,      // $
 			nil,      // digraph
-			nil,      // {
+			nil,      // id
+			shift(4), // {
 			nil,      // }
-			shift(7), // id
 			nil,      // ->
 		},
 	},
@@ -65,22 +65,22 @@ var actionTab = actionTable{
 			nil,      // INVALID
 			nil,      // $
 			nil,      // digraph
+			shift(5), // id
 			nil,      // {
-			shift(8), // }
-			shift(7), // id
+			nil,      // }
 			nil,      // ->
 		},
 	},
 	actionRow{ // S5
 		canRecover: false,
 		actions: [numSymbols]action{
-			nil,       // INVALID
-			nil,       // $
-			nil,       // digraph
-			nil,       // {
-			reduce(2), // }, reduce: Statements
-			reduce(2), // id, reduce: Statements
-			nil,       // ->
+			nil,      // INVALID
+			nil,      // $
+			nil,      // digraph
+			nil,      // id
+			nil,      // {
+			nil,      // }
+			shift(9), // ->
 		},
 	},
 	actionRow{ // S6
@@ -89,9 +89,9 @@ var actionTab = actionTable{
 			nil,       // INVALID
 			nil,       // $
 			nil,       // digraph
+			shift(5),  // id
 			nil,       // {
-			reduce(4), // }, reduce: Statement
-			reduce(4), // id, reduce: Statement
+			shift(10), // }
 			nil,       // ->
 		},
 	},
@@ -101,21 +101,21 @@ var actionTab = actionTable{
 			nil,       // INVALID
 			nil,       // $
 			nil,       // digraph
+			reduce(2), // id, reduce: Statements
 			nil,       // {
-			nil,       // }
-			nil,       // id
-			shift(10), // ->
+			reduce(2), // }, reduce: Statements
+			nil,       // ->
 		},
 	},
 	actionRow{ // S8
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,       // INVALID
-			reduce(1), // $, reduce: Grammar
+			nil,       // $
 			nil,       // digraph
+			reduce(4), // id, reduce: Statement
 			nil,       // {
-			nil,       // }
-			nil,       // id
+			reduce(4), // }, reduce: Statement
 			nil,       // ->
 		},
 	},
@@ -125,9 +125,9 @@ var actionTab = actionTable{
 			nil,       // INVALID
 			nil,       // $
 			nil,       // digraph
+			shift(12), // id
 			nil,       // {
-			reduce(3), // }, reduce: Statements
-			reduce(3), // id, reduce: Statements
+			nil,       // }
 			nil,       // ->
 		},
 	},
@@ -135,11 +135,11 @@ var actionTab = actionTable{
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,       // INVALID
-			nil,       // $
+			reduce(1), // $, reduce: Grammar
 			nil,       // digraph
+			nil,       // id
 			nil,       // {
 			nil,       // }
-			shift(11), // id
 			nil,       // ->
 		},
 	},
@@ -149,9 +149,21 @@ var actionTab = actionTable{
 			nil,       // INVALID
 			nil,       // $
 			nil,       // digraph
+			reduce(3), // id, reduce: Statements
+			nil,       // {
+			reduce(3), // }, reduce: Statements
+			nil,       // ->
+		},
+	},
+	actionRow{ // S12
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,       // INVALID
+			nil,       // $
+			nil,       // digraph
+			reduce(5), // id, reduce: EdgeStmt
 			nil,       // {
 			reduce(5), // }, reduce: EdgeStmt
-			reduce(5), // id, reduce: EdgeStmt
 			nil,       // ->
 		},
 	},

@@ -6,14 +6,14 @@ import (
 	"fmt"
 	"strings"
 
-	parseError "github.com/awalterschulze/parsing-in-go-example/example03_edges/gen_parser/errors"
-	"github.com/awalterschulze/parsing-in-go-example/example03_edges/gen_parser/token"
+	parseError "github.com/awalterschulze/parsing-in-go-example/example05_finish/gen_parser/errors"
+	"github.com/awalterschulze/parsing-in-go-example/example05_finish/gen_parser/token"
 )
 
 const (
-	numProductions = 6
-	numStates      = 13
-	numSymbols     = 12
+	numProductions = 15
+	numStates      = 29
+	numSymbols     = 22
 )
 
 // Stack

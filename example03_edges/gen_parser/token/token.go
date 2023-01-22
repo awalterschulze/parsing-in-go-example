@@ -139,9 +139,9 @@ var TokMap = TokenMap{
 		"INVALID",
 		"$",
 		"digraph",
+		"id",
 		"{",
 		"}",
-		"id",
 		"->",
 	},
 
@@ -149,9 +149,9 @@ var TokMap = TokenMap{
 		"INVALID": 0,
 		"$":       1,
 		"digraph": 2,
-		"{":       3,
-		"}":       4,
-		"id":      5,
+		"id":      3,
+		"{":       4,
+		"}":       5,
 		"->":      6,
 	},
 }

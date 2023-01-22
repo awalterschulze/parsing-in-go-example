@@ -5,11 +5,17 @@ import (
 )
 
 type Graph struct {
+	Name  string
 	Edges []*Edge
 }
 
 func NewGraph(s interface{}) (*Graph, error) {
 	return AppendStmt(&Graph{}, s)
+}
+
+func SetGraphName(g interface{}, name interface{}) (*Graph, error) {
+	g.(*Graph).Name = string(name.(*token.Token).Lit)
+	return g.(*Graph), nil
 }
 
 func AppendStmt(g *Graph, s interface{}) (*Graph, error) {
