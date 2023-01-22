@@ -7,7 +7,9 @@ id : _letter { _letter };
 
 // Grammar
 
+<< import . "github.com/awalterschulze/parsing-in-go-example/example02_sdt/ast" >>
+
 Grammar : EdgeStmt;
 
 EdgeStmt:
-  id "->" id;
+  id "->" id  << &Edge{Src: ID($0), Dst: ID($2)}, nil >> ;
