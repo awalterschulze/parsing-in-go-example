@@ -5,6 +5,7 @@ dependencies:
 .PHONY: regenerate
 regenerate:
 	(cd example01_edge && make regenerate)
+	make fmt
 
 .PHONY: test
 test:
@@ -14,7 +15,11 @@ test:
 build:
 	go build ./...
 
+.PHONY: fmt
+fmt:
+	gofmt -l -s -w .
+
 .PHONY: check
 check:
-	gofmt -l -s -w .
+	make fmt
 	git diff --exit-code
