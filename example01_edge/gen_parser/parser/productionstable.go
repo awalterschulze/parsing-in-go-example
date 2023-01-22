@@ -18,7 +18,7 @@ type (
 
 var productionsTable = ProdTab{
 	ProdTabEntry{
-		String: `S' : Grammar	<<  >>`,
+		String:     `S' : Grammar	<<  >>`,
 		Id:         "S'",
 		NTType:     0,
 		Index:      0,
@@ -28,7 +28,7 @@ var productionsTable = ProdTab{
 		},
 	},
 	ProdTabEntry{
-		String: `Grammar : id "->" id	<<  >>`,
+		String:     `Grammar : id "->" id	<<  >>`,
 		Id:         "Grammar",
 		NTType:     1,
 		Index:      1,
