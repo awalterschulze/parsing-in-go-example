@@ -1,5 +1,6 @@
 dependencies:
 	go get -u github.com/goccmack/gocc
+	go install github.com/goccmack/gocc
 
 .PHONY: regenerate
 regenerate:
