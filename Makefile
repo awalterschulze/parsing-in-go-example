@@ -6,6 +6,7 @@ dependencies:
 regenerate:
 	(cd example01_edge && make regenerate)
 	(cd example02_sdt && make regenerate)
+	(cd example03_edges && make regenerate)
 	make fmt
 
 .PHONY: test

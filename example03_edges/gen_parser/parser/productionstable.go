@@ -2,7 +2,7 @@
 
 package parser
 
-import . "github.com/awalterschulze/parsing-in-go-example/example02_sdt/ast"
+import . "github.com/awalterschulze/parsing-in-go-example/example03_edges/ast"
 
 type (
 	ProdTab      [numProductions]ProdTabEntry
@@ -30,10 +30,40 @@ var productionsTable = ProdTab{
 		},
 	},
 	ProdTabEntry{
-		String:     `Grammar : EdgeStmt	<<  >>`,
+		String:     `Grammar : "digraph" "{" Statements "}"	<< X[2], nil >>`,
 		Id:         "Grammar",
 		NTType:     1,
 		Index:      1,
+		NumSymbols: 4,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return X[2], nil
+		},
+	},
+	ProdTabEntry{
+		String:     `Statements : Statement	<< NewGraph(X[0]) >>`,
+		Id:         "Statements",
+		NTType:     2,
+		Index:      2,
+		NumSymbols: 1,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return NewGraph(X[0])
+		},
+	},
+	ProdTabEntry{
+		String:     `Statements : Statements Statement	<< AppendStmt(X[0].(*Graph), X[1]) >>`,
+		Id:         "Statements",
+		NTType:     2,
+		Index:      3,
+		NumSymbols: 2,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return AppendStmt(X[0].(*Graph), X[1])
+		},
+	},
+	ProdTabEntry{
+		String:     `Statement : EdgeStmt	<<  >>`,
+		Id:         "Statement",
+		NTType:     3,
+		Index:      4,
 		NumSymbols: 1,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return X[0], nil
@@ -42,8 +72,8 @@ var productionsTable = ProdTab{
 	ProdTabEntry{
 		String:     `EdgeStmt : id "->" id	<< &Edge{Src: ID(X[0]), Dst: ID(X[2])}, nil >>`,
 		Id:         "EdgeStmt",
-		NTType:     2,
-		Index:      2,
+		NTType:     4,
+		Index:      5,
 		NumSymbols: 3,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return &Edge{Src: ID(X[0]), Dst: ID(X[2])}, nil
