@@ -7,6 +7,7 @@ regenerate:
 	(cd example01_edge && make regenerate)
 	(cd example02_sdt && make regenerate)
 	(cd example03_edges && make regenerate)
+	(cd example04_attrs && make regenerate)
 	make fmt
 
 .PHONY: test

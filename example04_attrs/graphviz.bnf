@@ -1,0 +1,39 @@
+// Tokens
+
+_letter : 'a' - 'z' | 'A' - 'Z';
+id : _letter { _letter };
+
+!whitespace : ' ' | '\t' | '\r' | '\n' ;
+
+// Grammar
+
+<< import . "github.com/awalterschulze/parsing-in-go-example/example04_attrs/ast" >>
+
+Grammar
+  : "digraph" "{" Statements "}" << $2, nil >>
+  ;
+
+Statements
+  : Statement                    << NewGraph($0) >>
+  | Statements Statement         << AppendStmt($0.(*Graph), $1) >>
+  ;
+
+Statement
+  : EdgeStmt
+  ;
+
+EdgeStmt
+  : id "->" id OptionalAttributes << &Edge{Src: ID($0), Dst: ID($2), Attrs: $3.(Attrs)}, nil >> ;
+
+OptionalAttributes
+  : "[" Attributes "]"            << $1, nil >>
+  | empty                         << Attrs{}, nil >>
+  ;
+
+Attributes
+  : Attribute                     << $0, nil >>
+  | Attributes "," Attribute      << UnionMaps($0.(Attrs), $2.(Attrs)), nil >>
+  ;
+
+Attribute
+  : id "=" id                     << Attrs{ID($0): ID($2)}, nil >> ;
