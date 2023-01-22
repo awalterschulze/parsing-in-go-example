@@ -28,10 +28,20 @@ var productionsTable = ProdTab{
 		},
 	},
 	ProdTabEntry{
-		String:     `Grammar : id "->" id	<<  >>`,
+		String:     `Grammar : EdgeStmt	<<  >>`,
 		Id:         "Grammar",
 		NTType:     1,
 		Index:      1,
+		NumSymbols: 1,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return X[0], nil
+		},
+	},
+	ProdTabEntry{
+		String:     `EdgeStmt : id "->" id	<<  >>`,
+		Id:         "EdgeStmt",
+		NTType:     2,
+		Index:      2,
 		NumSymbols: 3,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return X[0], nil

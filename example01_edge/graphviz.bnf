@@ -3,5 +3,7 @@ id : _letter { _letter };
 
 !whitespace : ' ' | '\t' | '\r' | '\n' ;
 
-Grammar :
+Grammar : EdgeStmt;
+
+EdgeStmt:
   id "->" id;

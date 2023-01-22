@@ -2,7 +2,7 @@
 
 package parser
 
-const numNTSymbols = 2
+const numNTSymbols = 3
 
 type (
 	gotoTable [numStates]gotoRow
@@ -13,21 +13,31 @@ var gotoTab = gotoTable{
 	gotoRow{ // S0
 		-1, // S'
 		1,  // Grammar
+		2,  // EdgeStmt
 	},
 	gotoRow{ // S1
 		-1, // S'
 		-1, // Grammar
+		-1, // EdgeStmt
 	},
 	gotoRow{ // S2
 		-1, // S'
 		-1, // Grammar
+		-1, // EdgeStmt
 	},
 	gotoRow{ // S3
 		-1, // S'
 		-1, // Grammar
+		-1, // EdgeStmt
 	},
 	gotoRow{ // S4
 		-1, // S'
 		-1, // Grammar
+		-1, // EdgeStmt
+	},
+	gotoRow{ // S5
+		-1, // S'
+		-1, // Grammar
+		-1, // EdgeStmt
 	},
 }

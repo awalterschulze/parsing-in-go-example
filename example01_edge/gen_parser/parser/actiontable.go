@@ -16,7 +16,7 @@ var actionTab = actionTable{
 		actions: [numSymbols]action{
 			nil,      // INVALID
 			nil,      // $
-			shift(2), // id
+			shift(3), // id
 			nil,      // ->
 		},
 	},
@@ -32,10 +32,10 @@ var actionTab = actionTable{
 	actionRow{ // S2
 		canRecover: false,
 		actions: [numSymbols]action{
-			nil,      // INVALID
-			nil,      // $
-			nil,      // id
-			shift(3), // ->
+			nil,       // INVALID
+			reduce(1), // $, reduce: Grammar
+			nil,       // id
+			nil,       // ->
 		},
 	},
 	actionRow{ // S3
@@ -43,15 +43,24 @@ var actionTab = actionTable{
 		actions: [numSymbols]action{
 			nil,      // INVALID
 			nil,      // $
-			shift(4), // id
-			nil,      // ->
+			nil,      // id
+			shift(4), // ->
 		},
 	},
 	actionRow{ // S4
 		canRecover: false,
 		actions: [numSymbols]action{
+			nil,      // INVALID
+			nil,      // $
+			shift(5), // id
+			nil,      // ->
+		},
+	},
+	actionRow{ // S5
+		canRecover: false,
+		actions: [numSymbols]action{
 			nil,       // INVALID
-			reduce(1), // $, reduce: Grammar
+			reduce(2), // $, reduce: EdgeStmt
 			nil,       // id
 			nil,       // ->
 		},
